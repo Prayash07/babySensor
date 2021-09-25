@@ -23,14 +23,13 @@ class SizeScale {
 
 class ComponentWise {
   TextStyle appTitle(color) => TextStyle(
-        fontSize: SizeScale.regular4,
-        fontWeight: FontWeightClass.medium,
-        letterSpacing: -1.5,
+        fontSize: SizeScale.regular3,
+        fontWeight: FontWeightClass.bold,
         height: 1.25,
         color: color,
       );
   TextStyle objectTitle(color) => TextStyle(
-      fontSize: SizeScale.regular4,
+      fontSize: SizeScale.large1,
       fontWeight: FontWeightClass.semibold,
       letterSpacing: 0,
       height: 1.3,
@@ -42,6 +41,12 @@ class ComponentWise {
         // height: 1.15,
         color: color,
       );
+  TextStyle bodybold(color) => TextStyle(
+      fontSize: SizeScale.regular3,
+      fontWeight: FontWeightClass.semibold,
+      letterSpacing: 0,
+      height: 1.3,
+      color: color);
   TextStyle menuItems(color) => TextStyle(
       fontSize: SizeScale.regular2,
       fontWeight: FontWeightClass.medium,
@@ -96,12 +101,7 @@ class ComponentWise {
       letterSpacing: 0,
       height: 1.3,
       color: color);
-  TextStyle pageHeader(color) => TextStyle(
-      fontSize: SizeScale.regular2,
-      fontWeight: FontWeightClass.semibold,
-      letterSpacing: 0,
-      height: 1.3,
-      color: color);
+
   TextStyle formInput(color) => TextStyle(
       fontSize: SizeScale.regular2,
       fontWeight: FontWeightClass.medium,

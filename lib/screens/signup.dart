@@ -7,8 +7,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   SignUp({Key key}) : super(key: key);
+
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  Map<String, dynamic> loading = {
+    'signup': false,
+    'signin': false,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +68,16 @@ class SignUp extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       child: AppButton(
                         onPressed: () {
-                          print("signup printed");
+                          setState(() {
+                            loading['signup'] = true;
+                          });
+                          Future.delayed(Duration(seconds: 2), () {
+                            Navigator.of(context).pushReplacementNamed(
+                              '/firstSetup',
+                            );
+                          });
                         },
-                        loading: false,
+                        loading: loading['signup'],
                         text: "Sign up",
                         textColor: AppColors.white,
                         color: AppColors.secondaryColor,
@@ -76,9 +93,16 @@ class SignUp extends StatelessWidget {
                               width: 1, color: AppColors.secondaryColor)),
                       child: AppButton(
                         onPressed: () {
-                          print("login printed");
+                          setState(() {
+                            loading['signin'] = true;
+                          });
+                          Future.delayed(Duration(seconds: 2), () {
+                            Navigator.of(context).pushReplacementNamed(
+                              '/firstSetup',
+                            );
+                          });
                         },
-                        loading: false,
+                        loading: loading['signin'],
                         text: "Sign in",
                         textColor: AppColors.secondaryColor,
                         color: AppColors.white,

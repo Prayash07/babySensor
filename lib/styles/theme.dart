@@ -12,11 +12,9 @@ class AppTheme {
     backgroundColor: AppColors.backgroundColor,
     cardColor: AppColors.white,
     appBarTheme: AppBarTheme(
-        titleSpacing: 20,
-        centerTitle: false,
         color: AppColors.primaryColor,
         brightness: Brightness.light,
-        iconTheme: IconThemeData(color: AppColors.secondaryColor),
+        iconTheme: IconThemeData(color: AppColors.mainGreen2),
         textTheme: TextTheme(
           headline6: ComponentWise().appTitle(AppColors.white),
           // TextStyle(
