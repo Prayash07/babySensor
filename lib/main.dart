@@ -1,4 +1,9 @@
+import 'package:babysensornorwegian/routes/routes.dart';
+import 'package:babysensornorwegian/styles/theme.dart';
+import 'package:babysensornorwegian/widgets/customError.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,59 +12,30 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+    // Sizer package for managing the layout sizes
+    // ErrorWidget is built whenever there is any error in data (e.g. Text(null))
+    // Navigated with named routing
+    // Initialized Theme for the app
 
-  final String title;
+    return LayoutBuilder(builder: (context, constraints) {
+      return OrientationBuilder(builder: (context, orientation) {
+        SizerUtil().init(constraints, orientation);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'BabySensor Norwegian',
+          builder: (BuildContext context, Widget widget) {
+            ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+              return Center(child: CustomError(errorDetails: errorDetails));
+            };
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
+            return widget;
+          },
+          theme: AppTheme.lightThemeData,
+          onGenerateRoute: AppRoutes.generator,
+        );
+      });
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
   }
 }
