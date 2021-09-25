@@ -1,6 +1,6 @@
 # babysensornorwegian
 
-A new Flutter project.
+This Code is written for review purpose.
 
 ## Getting Started
 
