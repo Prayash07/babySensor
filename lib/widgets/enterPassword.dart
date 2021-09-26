@@ -1,9 +1,11 @@
 import 'package:babysensornorwegian/components/appButton.dart';
 import 'package:babysensornorwegian/components/textformfield.dart';
+import 'package:babysensornorwegian/getx/nameController.dart';
 import 'package:babysensornorwegian/screens/firstSetup.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 enterPassword(context) {
   return showModalBottomSheet<void>(
@@ -29,6 +31,7 @@ class _WifiPasswordState extends State<WifiPassword> {
   bool valueGreater;
   String formData;
   final _formKey = GlobalKey<FormState>();
+  final NameController nameController = Get.find<NameController>();
 
   @override
   void initState() {
@@ -99,7 +102,7 @@ class _WifiPasswordState extends State<WifiPassword> {
                               style: ComponentWise()
                                   .description(AppColors.lightText)),
                           TextSpan(
-                            text: 'Russel Family Wi-Fi ',
+                            text: '${nameController.name} ',
                             style:
                                 ComponentWise().bodybold(AppColors.mainGreen),
                           ),

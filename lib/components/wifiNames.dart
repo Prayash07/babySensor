@@ -1,3 +1,4 @@
+import 'package:babysensornorwegian/getx/nameController.dart';
 import 'package:babysensornorwegian/widgets/enterPassword.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/icons.dart';
@@ -5,6 +6,7 @@ import 'package:babysensornorwegian/styles/theme.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 List availableWifi = [
   'Russel Family Wi-Fi',
@@ -15,12 +17,16 @@ List availableWifi = [
 class WifiNames extends StatelessWidget {
   WifiNames({Key key, this.index}) : super(key: key);
   int index;
+  final NameController nameController = Get.find<NameController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        enterPassword(context);
+        nameController.setName(availableWifi[index]);
+        Future.delayed(Duration(milliseconds: 100), () {
+          enterPassword(context);
+        });
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),

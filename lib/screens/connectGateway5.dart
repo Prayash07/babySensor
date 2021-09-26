@@ -18,7 +18,11 @@ class ConnectGateway5 extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20.0),
             child: Row(
               children: [
-                Icon(Icons.arrow_back_ios),
+                Icon(
+                  Icons.arrow_back_ios,
+                  size: 20,
+                  color: AppColors.mainGreen2,
+                ),
                 Text(
                   "Back",
                   style: ComponentWise().description(AppColors.mainGreen2),

@@ -1,9 +1,11 @@
 import 'package:babysensornorwegian/components/firstSetupList.dart';
 import 'package:babysensornorwegian/components/wifiNames.dart';
+import 'package:babysensornorwegian/getx/nameController.dart';
+import 'package:babysensornorwegian/models/pageContent.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
-import 'package:babysensornorwegian/styles/images.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FirstSetup extends StatefulWidget {
   FirstSetup({Key key}) : super(key: key);
@@ -16,6 +18,7 @@ class _FirstSetupState extends State<FirstSetup> with TickerProviderStateMixin {
   AnimationController _controller;
   Animation animation;
   bool widgetVisible = false;
+  final NameController nameController = Get.put(NameController());
 
   @override
   void initState() {
@@ -78,7 +81,6 @@ class _FirstSetupState extends State<FirstSetup> with TickerProviderStateMixin {
                 itemBuilder: (context, index) {
                   return FirstSetupListComponent(
                     index: index,
-                    pageContent: pageContent,
                   );
                 },
               ),
