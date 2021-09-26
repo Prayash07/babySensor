@@ -1,4 +1,4 @@
-import 'package:babysensornorwegian/getx/nameController.dart';
+import 'package:babysensornorwegian/getx/wifiNameController.dart';
 import 'package:babysensornorwegian/widgets/enterPassword.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/icons.dart';

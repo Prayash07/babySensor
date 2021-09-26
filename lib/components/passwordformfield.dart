@@ -2,8 +2,8 @@ import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatefulWidget {
-  CustomTextFormField(
+class CustomPasswordFormField extends StatefulWidget {
+  CustomPasswordFormField(
       {Key key,
       this.focusNode,
       this.hintText,
@@ -16,10 +16,11 @@ class CustomTextFormField extends StatefulWidget {
   Function onVlaueSubmitted;
 
   @override
-  _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
+  _CustomPasswordFormFieldState createState() =>
+      _CustomPasswordFormFieldState();
 }
 
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
+class _CustomPasswordFormFieldState extends State<CustomPasswordFormField> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -33,7 +34,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return TextFormField(
       focusNode: widget.focusNode,
       controller: _controller,
+      obscuringCharacter: "*",
       enabled: true,
+      obscureText: true,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(

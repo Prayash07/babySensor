@@ -1,4 +1,5 @@
 import 'package:babysensornorwegian/components/appButton.dart';
+import 'package:babysensornorwegian/getx/wifiNameController.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/icons.dart';
 import 'package:babysensornorwegian/styles/images.dart';
@@ -6,6 +7,7 @@ import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({Key key}) : super(key: key);
@@ -15,6 +17,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final NameController nameController = Get.put(NameController());
+
   Map<String, dynamic> loading = {
     'signup': false,
     'signin': false,
@@ -71,10 +75,13 @@ class _SignUpState extends State<SignUp> {
                           setState(() {
                             loading['signup'] = true;
                           });
-                          Future.delayed(Duration(seconds: 2), () {
-                            Navigator.of(context).pushReplacementNamed(
+                          Future.delayed(Duration(seconds: 1), () {
+                            Navigator.of(context).pushNamed(
                               '/firstSetup',
                             );
+                            setState(() {
+                              loading['signup'] = false;
+                            });
                           });
                         },
                         loading: loading['signup'],
@@ -96,10 +103,13 @@ class _SignUpState extends State<SignUp> {
                           setState(() {
                             loading['signin'] = true;
                           });
-                          Future.delayed(Duration(seconds: 2), () {
-                            Navigator.of(context).pushReplacementNamed(
-                              '/firstSetup',
+                          Future.delayed(Duration(seconds: 1), () {
+                            Navigator.of(context).pushNamed(
+                              '/firstStepOfRegistration',
                             );
+                            setState(() {
+                              loading['signin'] = false;
+                            });
                           });
                         },
                         loading: loading['signin'],

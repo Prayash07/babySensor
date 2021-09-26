@@ -1,11 +1,11 @@
 import 'package:babysensornorwegian/components/firstSetupList.dart';
 import 'package:babysensornorwegian/components/wifiNames.dart';
-import 'package:babysensornorwegian/getx/nameController.dart';
-import 'package:babysensornorwegian/models/pageContent.dart';
+import 'package:babysensornorwegian/getx/wifiNameController.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
+import 'package:babysensornorwegian/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_network_library/flutter_network_library.dart';
 
 class FirstSetup extends StatefulWidget {
   FirstSetup({Key key}) : super(key: key);
@@ -18,7 +18,6 @@ class _FirstSetupState extends State<FirstSetup> with TickerProviderStateMixin {
   AnimationController _controller;
   Animation animation;
   bool widgetVisible = false;
-  final NameController nameController = Get.put(NameController());
 
   @override
   void initState() {
@@ -44,13 +43,10 @@ class _FirstSetupState extends State<FirstSetup> with TickerProviderStateMixin {
     _controller.forward();
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.backgroundColor,
-        elevation: 0,
-        title: Text(
-          'Set up: 1/3',
-          style: ComponentWise().appTitle(AppColors.lightDark),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: CustomAppBar(
+          title: 'Set up: 1/3',
         ),
       ),
       body: SingleChildScrollView(

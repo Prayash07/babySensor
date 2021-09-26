@@ -2,40 +2,17 @@ import 'package:babysensornorwegian/components/appButton.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/images.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
+import 'package:babysensornorwegian/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
 class ConnectGateway5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 100,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.arrow_back_ios,
-                  size: 20,
-                  color: AppColors.mainGreen2,
-                ),
-                Text(
-                  "Back",
-                  style: ComponentWise().description(AppColors.mainGreen2),
-                )
-              ],
-            ),
-          ),
-        ),
-        backgroundColor: AppColors.backgroundColor,
-        elevation: 0,
-        title: Text(
-          'Set up: 1/3',
-          style: ComponentWise().appTitle(AppColors.lightDark),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: CustomAppBar(
+          title: 'Set up: 1/3',
         ),
       ),
       body: SingleChildScrollView(

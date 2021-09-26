@@ -1,11 +1,19 @@
+import 'package:babysensornorwegian/config.dart';
+import 'package:babysensornorwegian/domain.dart';
 import 'package:babysensornorwegian/routes/routes.dart';
 import 'package:babysensornorwegian/styles/theme.dart';
 import 'package:babysensornorwegian/widgets/customError.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_network_library/flutter_network_library.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await RESTExecutor.initialize(config, domains);
+
   runApp(MyApp());
 }
 
@@ -22,7 +30,7 @@ class MyApp extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
         SizerUtil().init(constraints, orientation);
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'BabySensor Norwegian',
           builder: (BuildContext context, Widget widget) {

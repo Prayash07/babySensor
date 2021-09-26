@@ -1,6 +1,6 @@
 import 'package:babysensornorwegian/components/appButton.dart';
-import 'package:babysensornorwegian/components/textformfield.dart';
-import 'package:babysensornorwegian/getx/nameController.dart';
+import 'package:babysensornorwegian/components/passwordformfield.dart';
+import 'package:babysensornorwegian/getx/wifiNameController.dart';
 import 'package:babysensornorwegian/screens/firstSetup.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
@@ -126,8 +126,8 @@ class _WifiPasswordState extends State<WifiPassword> {
                       height: 5,
                     ),
                     SizedBox(
-                      height: 48,
-                      child: CustomTextFormField(
+                      height: 56,
+                      child: CustomPasswordFormField(
                         onChanged: (value) {
                           setState(() {
                             textLength = value;
