@@ -75,9 +75,9 @@ class _SignUpState extends State<SignUp> {
                           setState(() {
                             loading['signup'] = true;
                           });
-                          Future.delayed(Duration(seconds: 1), () {
+                          Future.delayed(Duration(milliseconds: 200), () {
                             Navigator.of(context).pushNamed(
-                              '/firstSetup',
+                              '/firstStepOfRegistration',
                             );
                             setState(() {
                               loading['signup'] = false;
@@ -103,7 +103,7 @@ class _SignUpState extends State<SignUp> {
                           setState(() {
                             loading['signin'] = true;
                           });
-                          Future.delayed(Duration(seconds: 1), () {
+                          Future.delayed(Duration(milliseconds: 200), () {
                             Navigator.of(context).pushNamed(
                               '/firstStepOfRegistration',
                             );

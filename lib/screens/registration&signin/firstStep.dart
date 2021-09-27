@@ -51,6 +51,7 @@ class _FirstStepOfRegistrationState extends State<FirstStepOfRegistration> {
         method: "POST",
         successCallback: (response) {
           setState(() {
+            focusNode.unfocus();
             loading = false;
           });
 
@@ -71,12 +72,10 @@ class _FirstStepOfRegistrationState extends State<FirstStepOfRegistration> {
           Navigator.of(context).pushNamed('/secondStepOfRegistration');
         },
         errorCallback: (data) {
-          Get.snackbar(
-            data.statusCode.toString(),
-            data.rawData,
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: AppColors.secondaryColor,
-          );
+          Get.snackbar(data.statusCode.toString(), data.rawData,
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: AppColors.secondaryColor,
+              colorText: AppColors.white);
           setState(() {
             loading = false;
           });
@@ -122,7 +121,7 @@ class _FirstStepOfRegistrationState extends State<FirstStepOfRegistration> {
                           height: 20,
                         ),
                         Text(
-                          "Enter your valid phone number and receive a verification code.",
+                          "Enter your valid phone number, you will receive a verification code.",
                           style:
                               ComponentWise().description(AppColors.lightText),
                         ),
@@ -145,7 +144,7 @@ class _FirstStepOfRegistrationState extends State<FirstStepOfRegistration> {
                               if (data == null ||
                                   data.isEmpty ||
                                   data.length < 10) {
-                                return 'The length should be equal to 10';
+                                return 'Enter your country code and number';
                               }
                               return null;
                             },
@@ -182,6 +181,7 @@ class _FirstStepOfRegistrationState extends State<FirstStepOfRegistration> {
                                           Map<String, dynamic> data = {
                                             "phoneNumber": formData.toString()
                                           };
+
                                           postData(data);
                                         }
                                       }

@@ -5,6 +5,7 @@ import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:babysensornorwegian/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_network_library/flutter_network_library.dart';
+import 'package:get/get.dart';
 
 class SecondStepOfRegistration extends StatefulWidget {
   SecondStepOfRegistration({Key key}) : super(key: key);
@@ -60,6 +61,10 @@ class _SecondStepOfRegistrationState extends State<SecondStepOfRegistration> {
           });
         },
         errorCallback: (data) {
+          Get.snackbar(data.statusCode.toString(), data.rawData,
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: AppColors.secondaryColor,
+              colorText: AppColors.white);
           setState(() {
             loading = false;
           });
@@ -109,10 +114,10 @@ class _SecondStepOfRegistrationState extends State<SecondStepOfRegistration> {
                 action: true,
                 loading: loading,
                 onActionPressed: () {
-                  setState(() {
-                    loading = true;
-                  });
                   if (_formKey.currentState.validate()) {
+                    setState(() {
+                      loading = true;
+                    });
                     Map<String, dynamic> data = {
                       "verificationId":
                           verificationCode.toString(), // From 'send-sms-code'

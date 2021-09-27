@@ -1,11 +1,9 @@
 import 'package:babysensornorwegian/components/firstSetupList.dart';
 import 'package:babysensornorwegian/components/wifiNames.dart';
-import 'package:babysensornorwegian/getx/wifiNameController.dart';
 import 'package:babysensornorwegian/styles/colors.dart';
 import 'package:babysensornorwegian/styles/typography.dart';
 import 'package:babysensornorwegian/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_network_library/flutter_network_library.dart';
 
 class FirstSetup extends StatefulWidget {
   FirstSetup({Key key}) : super(key: key);
